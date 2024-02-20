@@ -46,7 +46,7 @@ fun UserResponse.toUser(): User {
     return User(
         id = id.value,
         name = name.first + " " + name.last,
-        thumbnail = picture.thumbnail,
+        picture = picture.medium,
         address = location.country + ", " + location.state + ", " + location.city,
         number = phone
     )
