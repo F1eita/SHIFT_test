@@ -51,6 +51,10 @@ class UserListFragment : Fragment() {
             )
         )
         addObserver()
+        binding.swipeRefreshLayout.setOnRefreshListener {
+            viewModel.getUsers()
+            binding.swipeRefreshLayout.isRefreshing = false
+        }
         viewModel.getUsers()
     }
     private fun addObserver(){
