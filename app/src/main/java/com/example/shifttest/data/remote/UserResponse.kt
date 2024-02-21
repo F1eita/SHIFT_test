@@ -1,5 +1,6 @@
 package com.example.shifttest.data.remote
 
+import com.example.shifttest.data.storage.UserEntity
 import com.example.shifttest.domain.User
 
 data class UserResponse(
@@ -26,13 +27,11 @@ data class DobResponse(
 )
 
 data class LoginResponse(
-    val uuid: String,
-    val username: String
+    val uuid: String
 )
 
 data class PictureResponse(
-    val medium: String,
-    val thumbnail: String
+    val medium: String
 )
 
 fun UserResponse.toUser(): User {
@@ -42,5 +41,28 @@ fun UserResponse.toUser(): User {
         picture = picture.medium,
         address = location.country + ", " + location.state + ", " + location.city,
         number = phone
+    )
+}
+
+fun UserResponse.toUserEntity(): UserEntity{
+    return UserEntity(
+        id = login.uuid,
+        firstName = name.first,
+        lastName = name.last,
+        gender = gender,
+        email = email,
+        dob = dob.date,
+        age = dob.age,
+        phone = phone,
+        cell = cell,
+        picture = picture.medium,
+        nat = nat,
+        latitude = location.coordinates.latitude,
+        longitude = location.coordinates.longitude,
+        city = location.city,
+        country = location.country,
+        state = location.state,
+        streetName = location.street.name,
+        streetNumber = location.street.number
     )
 }

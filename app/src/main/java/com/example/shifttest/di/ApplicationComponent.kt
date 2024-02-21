@@ -14,7 +14,8 @@ import javax.inject.Singleton
         NetworkModule::class,
         ApplicationModule::class,
         ActivityModule::class,
-        FragmentModule::class
+        FragmentModule::class,
+        StorageModule::class
     ]
 )
 interface ApplicationComponent : AndroidInjector<ShiftApplication> {
