@@ -7,12 +7,14 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.shifttest.data.remote.ResponseStates
 import com.example.shifttest.domain.GetUsersUseCase
+import com.example.shifttest.domain.RefreshUseCase
 import com.example.shifttest.domain.User
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 class UserViewModel @Inject constructor(
     private val getUserUseCase: GetUsersUseCase,
+    private val refreshUseCase: RefreshUseCase
 ) : ViewModel() {
 
     private val _userLiveData = MutableLiveData<ResponseStates<List<User>>>()
@@ -22,12 +24,25 @@ class UserViewModel @Inject constructor(
         viewModelScope.launch {
             _userLiveData.value = ResponseStates.Loading()
             try {
-                Log.d("proverkaaa", "success")
                 _userLiveData.value = ResponseStates.Success(
                     getUserUseCase.execute()
                 )
             } catch (e: Exception) {
-                Log.d("proverkaaa", "fail")
+                _userLiveData.value = ResponseStates.Failure(
+                    e
+                )
+            }
+        }
+    }
+
+    fun refreshUsers(){
+        viewModelScope.launch {
+            _userLiveData.value = ResponseStates.Loading()
+            try {
+                _userLiveData.value = ResponseStates.Success(
+                    refreshUseCase.execute()
+                )
+            } catch (e: Exception) {
                 _userLiveData.value = ResponseStates.Failure(
                     e
                 )
