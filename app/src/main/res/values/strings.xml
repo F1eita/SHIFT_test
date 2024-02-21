@@ -1,4 +1,9 @@
 <resources>
     <string name="app_name">SHIFT test</string>
-    <string name="info_pattern">%1$s %2$s</string>
+    <string name="name_pattern">%1$s %2$s</string>
+    <string name="gender_pattern">Gender: %1$s</string>
+    <string name="email_pattern">Email: %1$s</string>
+    <string name="dob_pattern">Age: %1$s  Date Of Birthday: %2$s</string>
+    <string name="phone_pattern">Phone: %1$s</string>
+    <string name="address_pattern">Address: %1$s, %2$s, %3$s, %4$s, %5$s</string>
 </resources>

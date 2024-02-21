@@ -1,4 +1,4 @@
-package com.example.shifttest.presentation
+package com.example.shifttest.presentation.user_list
 
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide

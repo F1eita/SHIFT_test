@@ -2,8 +2,7 @@ package com.example.shifttest.di
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import com.example.shifttest.presentation.UserListFragment
-import com.example.shifttest.presentation.UserViewModel
+import com.example.shifttest.presentation.user_list.UserViewModel
 import dagger.Binds
 import dagger.Module
 import dagger.multibindings.IntoMap

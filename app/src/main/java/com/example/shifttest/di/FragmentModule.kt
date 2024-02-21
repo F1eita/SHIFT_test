@@ -1,6 +1,6 @@
 package com.example.shifttest.di
 
-import com.example.shifttest.presentation.UserListFragment
+import com.example.shifttest.presentation.user_list.UserListFragment
 import dagger.Module
 import dagger.android.ContributesAndroidInjector
 

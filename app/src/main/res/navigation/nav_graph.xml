@@ -7,7 +7,20 @@
 
     <fragment
         android:id="@+id/userListFragment"
-        android:name="com.example.shifttest.presentation.UserListFragment"
+        android:name="com.example.shifttest.presentation.user_list.UserListFragment"
         android:label="fragment_user_list"
-        tools:layout="@layout/fragment_user_list" />
+        tools:layout="@layout/fragment_user_list" >
+        <action
+            android:id="@+id/action_userListFragment_to_userInfoFragment"
+            app:destination="@id/userInfoFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/userInfoFragment"
+        android:name="com.example.shifttest.presentation.user_info.UserInfoFragment"
+        android:label="fragment_user_info"
+        tools:layout="@layout/fragment_user_info" >
+        <argument
+            android:name="id"
+            app:argType="string" />
+    </fragment>
 </navigation>
