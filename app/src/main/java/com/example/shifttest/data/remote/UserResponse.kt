@@ -7,17 +7,15 @@ data class UserResponse(
     val name: NameResponse,
     val location: LocationResponse,
     val email: String,
+    val login: LoginResponse,
     val dob: DobResponse,
-    val registered: RegisteredResponse,
     val phone: String,
     val cell: String,
-    val id: IdResponse,
     val picture: PictureResponse,
     val nat: String
 )
 
 data class NameResponse(
-    val title: String,
     val first: String,
     val last: String
 )
@@ -27,14 +25,9 @@ data class DobResponse(
     val age: Int
 )
 
-data class RegisteredResponse(
-    val date: String,
-    val age: Int
-)
-
-data class IdResponse(
-    val name: String,
-    val value: String
+data class LoginResponse(
+    val uuid: String,
+    val username: String
 )
 
 data class PictureResponse(
@@ -44,7 +37,7 @@ data class PictureResponse(
 
 fun UserResponse.toUser(): User {
     return User(
-        id = id.value,
+        id = login.uuid,
         name = name.first + " " + name.last,
         picture = picture.medium,
         address = location.country + ", " + location.state + ", " + location.city,
