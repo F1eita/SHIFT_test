@@ -1,11 +1,13 @@
 package com.example.shifttest.presentation.user_info
 
 import android.content.Context
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.createViewModelLazy
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.navArgs
@@ -76,7 +78,44 @@ class UserInfoFragment : Fragment() {
                     convertDateToView(user.dob))
                 tvAddress.text = resources.getString(R.string.address_pattern, user.country,
                     user.state, user.country, user.streetName, user.streetNumber.toString())
+
+                tvPhone.setOnClickListener {
+                    onClickPhone(user.phone)
+                }
+                tvEmail.setOnClickListener {
+                    onClickEmail(user.email)
+                }
+                tvAddress.setOnClickListener{
+                    onClickAddress(user.streetNumber.toString(), user.streetName,
+                        user.city, user.country)
+                }
             }
+        }
+    }
+
+    private fun onClickPhone(phone: String){
+        val callIntent = Intent(Intent.ACTION_DIAL)
+        callIntent.data = Uri.parse("tel:$phone")
+        if (callIntent.resolveActivity(requireContext().packageManager) != null){
+            startActivity(callIntent)
+        }
+    }
+
+    private fun onClickEmail(email: String){
+        val emailIntent = Intent(Intent.ACTION_SENDTO)
+        emailIntent.data = Uri.parse("mailto: $email")
+        if (emailIntent.resolveActivity(requireContext().packageManager) != null) {
+            startActivity(emailIntent)
+        }
+    }
+
+    private fun onClickAddress(streetNumber: String, streetName: String,
+                               city: String, country: String){
+        val mapIntent = Intent(Intent.ACTION_VIEW,
+            Uri.parse("geo:0,0?q= $streetNumber $streetName, $city, $country"))
+        mapIntent.setPackage("com.google.android.apps.maps")
+        if (mapIntent.resolveActivity(requireContext().packageManager) != null) {
+            startActivity(mapIntent)
         }
     }
 
