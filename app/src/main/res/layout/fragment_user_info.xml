@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".presentation.user_info.UserInfoFragment" >
+
+    <LinearLayout
+        android:id="@+id/mainInfoLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:paddingVertical="@dimen/padding_100"
+        android:background="?colorAccent">
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="@dimen/user_picture"
+            android:layout_height="@dimen/user_picture"
+            android:layout_gravity="center"
+            android:layout_marginVertical="@dimen/padding_100"/>
+
+        <TextView
+            android:id="@+id/tvName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/white"
+            android:textSize="@dimen/user_name"
+            android:layout_gravity="center"
+            android:textAlignment="center"
+            android:textStyle="bold"
+            />
+    </LinearLayout>
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/startLine"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintGuide_begin="@dimen/padding_100"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/endLine"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintGuide_end="@dimen/padding_100"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tvEmail"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="@id/startLine"
+        app:layout_constraintTop_toBottomOf="@id/mainInfoLayout"
+        app:layout_constraintEnd_toEndOf="@id/endLine"
+        app:layout_constraintHorizontal_bias="0"
+        android:layout_marginTop="@dimen/padding_100"
+        />
+
+    <TextView
+        android:id="@+id/tvPhone"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="@id/startLine"
+        app:layout_constraintTop_toBottomOf="@id/tvEmail"
+        app:layout_constraintEnd_toEndOf="@id/endLine"
+        app:layout_constraintHorizontal_bias="0"
+        android:layout_marginTop="@dimen/padding_100"
+        />
+
+    <TextView
+        android:id="@+id/tvGender"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="@id/startLine"
+        app:layout_constraintTop_toBottomOf="@id/tvPhone"
+        app:layout_constraintEnd_toEndOf="@id/endLine"
+        app:layout_constraintHorizontal_bias="0"
+        android:layout_marginTop="@dimen/padding_100"
+        />
+    <TextView
+        android:id="@+id/tvDob"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="@id/startLine"
+        app:layout_constraintTop_toBottomOf="@id/tvGender"
+        app:layout_constraintEnd_toEndOf="@id/endLine"
+        app:layout_constraintHorizontal_bias="0"
+        android:layout_marginTop="@dimen/padding_100"
+        />
+    <TextView
+        android:id="@+id/tvAddress"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="@id/startLine"
+        app:layout_constraintTop_toBottomOf="@id/tvDob"
+        app:layout_constraintEnd_toEndOf="@id/endLine"
+        app:layout_constraintHorizontal_bias="0"
+        android:layout_marginTop="@dimen/padding_100"
+        />
+</androidx.constraintlayout.widget.ConstraintLayout>

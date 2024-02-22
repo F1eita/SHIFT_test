@@ -1,20 +1,18 @@
-package com.example.shifttest.presentation
+package com.example.shifttest.presentation.user_list
 
 import android.content.Context
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.createViewModelLazy
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.RecyclerView
-import com.example.shifttest.R
 import com.example.shifttest.data.remote.ResponseStates
 import com.example.shifttest.databinding.FragmentUserListBinding
-import com.example.shifttest.domain.User
 import dagger.android.support.AndroidSupportInjection
 import javax.inject.Inject
 
@@ -62,9 +60,11 @@ class UserListFragment : Fragment() {
             when (result) {
                 is ResponseStates.Success -> {
                     val itemList = mutableListOf<UserItem>()
-                    result.data.forEach {
-                        itemList.add(UserItem(user = it, onClick = {
-                            //TODO(): Открытие полной информации о пользователе
+                    result.data.forEach { user ->
+                        itemList.add(UserItem(user = user, onClick = {
+                            val action = UserListFragmentDirections
+                                .actionUserListFragmentToUserInfoFragment(id = user.id)
+                            findNavController().navigate(action)
                         }))
                     }
                     adapter.submitList(itemList)

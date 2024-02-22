@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:id="@+id/swipeRefreshLayout"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".presentation.UserListFragment">
+    tools:context=".presentation.user_list.UserListFragment">
 
     <ViewFlipper
         android:id="@+id/viewFlipper"
